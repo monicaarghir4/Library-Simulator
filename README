@@ -1,0 +1,73 @@
+Arghir Monica-Andreea       --  312CA
+The Library of HashBabel    --  Second Homework
+
+------------------------------------------------------------------------------
+
+    Starting from the main function, I created two hashtabels with an initial
+maximum number of buckets of 10 and then I started reading every command,
+until the EXIT one, by reading the whole line. I compared the read string
+with every command and for each one declared its arguments and got me using
+specific functions and deleting parts of the string from the beginning. Then
+I called a different function for each command.
+
+------------------------------------------------------------------------------
+
+    For the functions that get the needed arguments from the command I wanted
+to be careful about the quotation marks, reading character by character.
+Different commands had the arguments in different orders so it was necessary
+for me to have multiple functions to get the arguments.
+
+------------------------------------------------------------------------------
+
+    For the hashtabels of books and users I thought it will be better that the
+value will hold a certain data structure that contains all of the data I need
+along the way.
+
+------------------------------------------------------------------------------
+
+    When implementing the linked-lists I made some generic functions that I
+could use anytime regardless its data. The hashtabels were implemented
+almost in the same way, but the resize functions are a bit specific for each
+type. Firstly I have a function that compares two strings to be able to find
+certain keys or values when looking. The function that calculates the hash of
+every string is the best I could find so the collisions don't happen very
+often. Beside the generic and usual functions for a hashtable, I considered
+it was necessary to have three different ones for the resizing of them because
+the data each one holds it's very different. For resizing I created a new list
+with a different number of buckets in which I copied the data that the
+hashtabel contained.
+
+------------------------------------------------------------------------------
+
+    To remove a book from the library I freed its memory starting with the
+hashtabel of definitions, the value of the book, the data and removing the
+node from the list. To add a book to the library I firstly checked if the book
+was there, and if it was I deleted it to be able to add the new definitions.
+Then I created a hashtabel for the definitions and read them from the stdin,
+verifying if the hashtabel needs resizing each time we add a book. When
+adding a new book, its values are: reachable(the value is 1), the number of
+loans is 0 and its score also 0.
+    When adding a new definition to a book that already exits in the library,
+I searched the specific book and add it when it was found. For removing a
+definition, I just removed its entry from the hashtabel.
+    To free the whole library I had to firstly free from every book its values
+meaning the hashtabel of definitions mostly.
+
+------------------------------------------------------------------------------
+
+    When adding a user to the hashtable I set the initial characteristics
+and I checked if the hashtabel needs resizing. When a user borrows a book,
+that book becomes unreachable and the value of the user is changed to the
+specific characteristics. When a book is being returned, we calculate the
+number of points that will be added or subtracted. We also change the users
+value and the books value and check if the user has to be banned if his points 
+go below zero. When a book it's lost it is removed from the library and we
+reset the users characteristics.
+
+------------------------------------------------------------------------------
+
+    The function that prints a book gets the value of it and displays the
+name, its rating and the number of purchases. For a definition we just look
+for the value of the specified definition. When it's time to exit the program
+we call the top functions, one for books and one for users, which sorts the
+hashtabels and then prints the new sorted list created.
